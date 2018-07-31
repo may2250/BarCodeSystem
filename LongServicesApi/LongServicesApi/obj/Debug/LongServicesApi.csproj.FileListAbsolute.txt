@@ -1,0 +1,6 @@
+F:\project\LongServicesApi\LongServicesApi\bin\Debug\LongServicesApi.dll
+F:\project\LongServicesApi\LongServicesApi\bin\Debug\LongServicesApi.pdb
+F:\project\LongServicesApi\LongServicesApi\bin\Debug\MySql.Data.dll
+F:\project\LongServicesApi\LongServicesApi\bin\Debug\Newtonsoft.Json.dll
+F:\project\LongServicesApi\LongServicesApi\obj\Debug\LongServicesApi.dll
+F:\project\LongServicesApi\LongServicesApi\obj\Debug\LongServicesApi.pdb

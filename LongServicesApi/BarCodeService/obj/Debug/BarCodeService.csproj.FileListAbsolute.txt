@@ -1,0 +1,11 @@
+F:\project\LongServicesApi\BarCodeService\bin\Debug\BarCodeService.exe
+F:\project\LongServicesApi\BarCodeService\bin\Debug\BarCodeService.pdb
+F:\project\LongServicesApi\BarCodeService\bin\Debug\LongServicesApi.dll
+F:\project\LongServicesApi\BarCodeService\bin\Debug\MySql.Data.dll
+F:\project\LongServicesApi\BarCodeService\bin\Debug\Newtonsoft.Json.dll
+F:\project\LongServicesApi\BarCodeService\bin\Debug\LongServicesApi.pdb
+F:\project\LongServicesApi\BarCodeService\obj\Debug\BarCodeService.csprojResolveAssemblyReference.cache
+F:\project\LongServicesApi\BarCodeService\obj\Debug\BarCodeService.exe
+F:\project\LongServicesApi\BarCodeService\obj\Debug\BarCodeService.pdb
+F:\project\android\BarCodeSystem\LongServicesApi\BarCodeService\obj\Debug\BarCodeService.exe
+F:\project\android\BarCodeSystem\LongServicesApi\BarCodeService\obj\Debug\BarCodeService.pdb

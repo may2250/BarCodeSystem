@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LongServicesApi", "LongServicesApi\LongServicesApi.csproj", "{B0A5C27F-FDD2-447B-887D-20B91BA4AC42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarCodeService", "BarCodeService\BarCodeService.csproj", "{333D1E89-3105-4827-B983-97CFCA00A0FB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B0A5C27F-FDD2-447B-887D-20B91BA4AC42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0A5C27F-FDD2-447B-887D-20B91BA4AC42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0A5C27F-FDD2-447B-887D-20B91BA4AC42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0A5C27F-FDD2-447B-887D-20B91BA4AC42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{333D1E89-3105-4827-B983-97CFCA00A0FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{333D1E89-3105-4827-B983-97CFCA00A0FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{333D1E89-3105-4827-B983-97CFCA00A0FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{333D1E89-3105-4827-B983-97CFCA00A0FB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
