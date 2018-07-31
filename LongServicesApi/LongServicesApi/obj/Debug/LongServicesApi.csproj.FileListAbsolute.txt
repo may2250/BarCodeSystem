@@ -4,3 +4,8 @@ F:\project\LongServicesApi\LongServicesApi\bin\Debug\MySql.Data.dll
 F:\project\LongServicesApi\LongServicesApi\bin\Debug\Newtonsoft.Json.dll
 F:\project\LongServicesApi\LongServicesApi\obj\Debug\LongServicesApi.dll
 F:\project\LongServicesApi\LongServicesApi\obj\Debug\LongServicesApi.pdb
+F:\project\android\BarCodeSystem\LongServicesApi\LongServicesApi\bin\Debug\LongServicesApi.dll
+F:\project\android\BarCodeSystem\LongServicesApi\LongServicesApi\bin\Debug\LongServicesApi.pdb
+F:\project\android\BarCodeSystem\LongServicesApi\LongServicesApi\obj\Debug\LongServicesApi.csprojResolveAssemblyReference.cache
+F:\project\android\BarCodeSystem\LongServicesApi\LongServicesApi\obj\Debug\LongServicesApi.dll
+F:\project\android\BarCodeSystem\LongServicesApi\LongServicesApi\obj\Debug\LongServicesApi.pdb

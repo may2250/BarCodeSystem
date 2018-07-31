@@ -21,11 +21,11 @@ namespace LongServicesApi
             {
                 mysqlEngine.OpenMysql();
             }
-            TBODY body = Common.DeserializeJsonToObject<TBODY>(tbody);
-            UserEntity user = Common.DeserializeJsonToObject<UserEntity>(body.data.ToString());
+            UserEntity user = Common.DeserializeJsonToObject<UserEntity>(tbody);
             TBODY response = new TBODY();
-            response.msgcode = body.msgcode;
-
+            response.msgcode = 0;
+            response.errinfo = "";
+            response.status = -1;
             mysqlEngine.Authed(user, ref response);
 
             return new MemoryStream(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(response)));
