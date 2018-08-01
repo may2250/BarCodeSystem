@@ -37,9 +37,7 @@ public class NetUtils {
         if (null != connectivity) {
             NetworkInfo info = connectivity.getActiveNetworkInfo();
             if (null != info && info.isConnected()) {
-                if (info.getState() == NetworkInfo.State.CONNECTED) {
-                    return true;
-                }
+                return true;
             }
         }
         return false;

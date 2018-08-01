@@ -1,5 +1,7 @@
 package barcode.along.barcode.Api;
 
+import android.util.Log;
+
 import barcode.along.barcode.Utils.ToastUtil;
 import barcode.along.barcode.bean.HttpResult;
 import io.reactivex.functions.Function;
@@ -15,10 +17,11 @@ public class HttpResultFunc<T> implements Function<HttpResult<T>,T> {
     @Override
     public T apply(HttpResult<T> tHttpResult) throws Exception {
         if (tHttpResult.status != 0){//假设当结果为true的时候是请求成功
-            if (tHttpResult.errinfo != ""){//请求失败的情况下吐司错误信息
+            if (tHttpResult.errinfo != ""){
                 ToastUtil.showShort( tHttpResult.errinfo);
             }
         }
+        Log.d("HttpResultFunc", Thread.currentThread().getName());
         return tHttpResult.data;
     }
 }

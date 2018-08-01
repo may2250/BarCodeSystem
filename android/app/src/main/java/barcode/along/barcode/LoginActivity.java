@@ -1,5 +1,6 @@
 package barcode.along.barcode;
 
+import android.content.Intent;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
@@ -14,13 +15,15 @@ import com.google.gson.Gson;
 
 import barcode.along.barcode.Api.ApiService;
 import barcode.along.barcode.Api.HttpObserver;
+import barcode.along.barcode.Utils.App;
+import barcode.along.barcode.Utils.Base64Utils;
 import barcode.along.barcode.Utils.SharedPreferencesUtils;
 import barcode.along.barcode.Utils.ToastUtil;
 import barcode.along.barcode.bean.UserBean;
 import io.reactivex.disposables.Disposable;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
-    SharedPreferencesUtils helper = new SharedPreferencesUtils(this, "setting");
+    SharedPreferencesUtils helper = new SharedPreferencesUtils(App.INSTANCE, "setting");
     private LoadingDialog mLoadingDialog; //显示正在加载的对话框
     //布局内的控件
     private EditText et_name;
@@ -53,7 +56,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 checkBox_password.setChecked(true);//勾选记住密码
                 setTextNameAndPassword();//把密码和账号输入到输入框中
             } else {
-                et_name.setText(helper.getString("name"));
+                et_name.setText(helper.getString("username"));
             }
 
             //判断是否自动登录
@@ -126,7 +129,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
             helper.putValues(new SharedPreferencesUtils.ContentValue("first", false),
                     new SharedPreferencesUtils.ContentValue("remenberPassword", false),
                     new SharedPreferencesUtils.ContentValue("autoLogin", false),
-                    new SharedPreferencesUtils.ContentValue("name", ""),
+                    new SharedPreferencesUtils.ContentValue("username", ""),
                     new SharedPreferencesUtils.ContentValue("password", ""));
             return true;
         }
@@ -140,8 +143,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     }
 
     public void setTextNameAndPassword() {
-        et_name.setText(helper.getString("name"));
-        et_password.setText(helper.getString("password"));
+        et_name.setText(helper.getString("username"));
+        et_password.setText(Base64Utils.getFromBase64(helper.getString("password")));
     }
 
     /**
@@ -149,7 +152,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
      */
     public void loadUserName() {
         if (!et_name.getText().equals("") || !et_name.getText().equals("请输入登录账号")) {
-            helper.putValues(new SharedPreferencesUtils.ContentValue("name", et_name.getText()));
+            helper.putValues(new SharedPreferencesUtils.ContentValue("username", et_name.getText()));
         }
 
     }
@@ -193,8 +196,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         ApiService.getApiService().auth(new HttpObserver<UserBean>() {
             @Override
             public void onNext(UserBean userBean) {
-                ToastUtil.showShort(userBean.toString());
-                Log.d("MainActivity", userBean.toString());
+                Log.d("MainActivity", userBean.getUsername());
+                loadCheckBoxState(checkBox_password, checkBox_login);
+                mLoadingDialog.hide();
+                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                finish();//关闭页面
             }
 
             @Override
@@ -203,11 +209,44 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
             }
 
             @Override
+            public void onError(Throwable e) {
+                super.onError(e);
+                mLoadingDialog.hide();
+            }
+
+            @Override
             public void getDisposable(Disposable disposable) {
                 addDisposable(disposable);
             }
         },gson.toJson(user));
 
+    }
+
+    /**
+     * 保存按钮的状态值
+     */
+    public void loadCheckBoxState(CheckBox checkBox_password, CheckBox checkBox_login) {
+        //如果设置自动登录
+        if (checkBox_login.isChecked()) {
+            //创建记住密码和自动登录是都选择,保存密码数据
+            helper.putValues(
+                    new SharedPreferencesUtils.ContentValue("remenberPassword", true),
+                    new SharedPreferencesUtils.ContentValue("autoLogin", true),
+                    new SharedPreferencesUtils.ContentValue("password", Base64Utils.getBase64(et_password.getText().toString())));
+
+        } else if (!checkBox_password.isChecked()) { //如果没有保存密码，那么自动登录也是不选的
+            //创建记住密码和自动登录是默认不选,密码为空
+            helper.putValues(
+                    new SharedPreferencesUtils.ContentValue("remenberPassword", false),
+                    new SharedPreferencesUtils.ContentValue("autoLogin", false),
+                    new SharedPreferencesUtils.ContentValue("password", ""));
+        } else if (checkBox_password.isChecked()) {   //如果保存密码，没有自动登录
+            //创建记住密码为选中和自动登录是默认不选,保存密码数据
+            helper.putValues(
+                    new SharedPreferencesUtils.ContentValue("remenberPassword", true),
+                    new SharedPreferencesUtils.ContentValue("autoLogin", false),
+                    new SharedPreferencesUtils.ContentValue("password", Base64Utils.getBase64(et_password.getText().toString())));
+        }
     }
 
     /**

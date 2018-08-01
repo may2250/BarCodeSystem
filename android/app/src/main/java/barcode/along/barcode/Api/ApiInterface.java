@@ -15,7 +15,7 @@ public interface ApiInterface {
     /**
      * 获取健康信息
      */
-    @POST("/Auth")
+    @POST("Auth")
     Observable<HttpResult<UserBean>> auth(@Body String str);
 
 }

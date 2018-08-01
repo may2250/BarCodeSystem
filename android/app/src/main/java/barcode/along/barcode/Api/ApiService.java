@@ -44,7 +44,7 @@ public class ApiService {
                 .client(mOkHttpClient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .baseUrl("http://192.168.9.221:8000/BarcodeService/")//替换为你自己的BaseUrl
+                .baseUrl("http://192.168.103.2:8000/BarcodeService/")//替换为你自己的BaseUrl
                 .build();
 
         mApiInterface = mRetrofit.create(ApiInterface.class);

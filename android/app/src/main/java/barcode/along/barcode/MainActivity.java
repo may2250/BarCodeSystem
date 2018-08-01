@@ -6,8 +6,17 @@ import android.os.Bundle;
 public class MainActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public int initContentView() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected void initUIAndListener() {
+
+    }
+
+    @Override
+    protected void initData() {
+
     }
 }
