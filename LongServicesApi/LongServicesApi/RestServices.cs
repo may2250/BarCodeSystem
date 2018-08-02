@@ -7,6 +7,7 @@ using System.Linq;
 using System.ServiceModel;
 using System.ServiceModel.Activation;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace LongServicesApi
 {
@@ -33,9 +34,28 @@ namespace LongServicesApi
 
         public Stream GetProduct(string querystr)
         {
-            dynamic obj = new JObject { { "ProductId", 10 }, { "Name", "xxxdfe" }, { "CategoryName", "jsdifadfi" }, { "Price", 52 } };
+            TBODY response = new TBODY();
+            response.msgcode = 0;
+            response.errinfo = "";
+            response.status = -1;
+            QueryCmd query = Common.DeserializeJsonToObject<QueryCmd>(querystr);
+            string sql = "";
+            string sql2 = "";
+            sql = Common.CreateSqlStr(query, ref sql2);
 
-            return new MemoryStream(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(obj)));
+            QueryResult qr = new QueryResult();
+            qr.page = query.page;
+
+            if (mysqlEngine.getResultset(sql, sql2, ref qr))
+            {
+                response.status = 0;
+            }
+            else
+            {
+                response.status = 1;
+            }
+            response.data = qr;
+            return new MemoryStream(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(response)));
         }
     }
 }

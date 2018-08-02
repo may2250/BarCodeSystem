@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -126,6 +127,56 @@ namespace LongServicesApi
                 if (reader != null)
                     reader.Close();
             }            
+        }
+
+        public bool getResultset(string sql, string sqlstr2, ref QueryResult response)
+        {
+            bool flag = true;
+            if (myCon.State == System.Data.ConnectionState.Closed || myCon.State == System.Data.ConnectionState.Broken)
+            {
+                OpenMysql();
+            }
+            MySqlDataReader reader = null;
+            ArrayList results = new ArrayList();
+            try
+            {
+                lock (lockobj)
+                {
+                    MySqlCommand mySqlCommand = getSqlCommand(sqlstr2, myCon);
+                    response.resultcnt = Convert.ToInt32(mySqlCommand.ExecuteScalar());
+                    mySqlCommand = getSqlCommand(sql, myCon);
+                    reader = mySqlCommand.ExecuteReader();
+                }
+
+                while (reader.Read())
+                {
+                    if (reader.HasRows)
+                    {
+                        ComMessage_t data = new ComMessage_t();
+                        data.username = reader.GetString(1);
+                        data.boxid = reader.GetString(2);
+                        data.orderid = reader.GetString(3);
+                        data.mac = reader.GetString(4);
+                        data.wifimac = reader.GetString(5);
+                        data.gpsn = reader.GetString(6);
+                        data.sn = reader.GetString(7);
+                        data.optdate = reader.GetString(8);
+                        results.Add(data);
+                        flag = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                flag = false;
+            }
+            finally
+            {
+                if (reader != null)
+                    reader.Close();
+            }
+            response.result = results;
+            return flag;
         }
 
     }

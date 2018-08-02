@@ -8,6 +8,7 @@ import io.reactivex.Observable;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.QueryMap;
 
 public interface ApiInterface {
@@ -17,5 +18,8 @@ public interface ApiInterface {
      */
     @POST("Auth")
     Observable<HttpResult<UserBean>> auth(@Body String str);
+
+    @GET("Product/{querystr}")
+    Observable<HttpResult<UserBean>> getProduct(@Path("querystr") String querystr);
 
 }
