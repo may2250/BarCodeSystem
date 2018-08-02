@@ -13,7 +13,6 @@ import android.widget.TextView;
 public class LoadingDialog extends ProgressDialog {
 
     private String mMessage;
-
     private TextView mTitleTv;
 
 
@@ -37,7 +36,6 @@ public class LoadingDialog extends ProgressDialog {
         this.mMessage = message;
         mTitleTv.setText(mMessage);
     }
-
 
 
     /**

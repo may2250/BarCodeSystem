@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/navigation_scanner"
+        android:enabled="true"
+        android:icon="@drawable/barcodescanner"
+        android:title="@string/title_scanner"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/navigation_search"
+        android:enabled="true"
+        android:icon="@drawable/search"
+        android:title="@string/title_search"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/navigation_about"
+        android:enabled="true"
+        android:icon="@drawable/persons"
+        android:title="@string/title_about"
+        app:showAsAction="ifRoom"/>
+
+
+</menu>
