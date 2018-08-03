@@ -3,6 +3,7 @@ package barcode.along.barcode.Api;
 import java.util.Map;
 
 import barcode.along.barcode.bean.HttpResult;
+import barcode.along.barcode.bean.QueryResultBean;
 import barcode.along.barcode.bean.UserBean;
 import io.reactivex.Observable;
 import retrofit2.http.Body;
@@ -20,6 +21,6 @@ public interface ApiInterface {
     Observable<HttpResult<UserBean>> auth(@Body String str);
 
     @GET("Product/{querystr}")
-    Observable<HttpResult<UserBean>> getProduct(@Path("querystr") String querystr);
+    Observable<HttpResult<QueryResultBean>> getProduct(@Path("querystr") String querystr);
 
 }

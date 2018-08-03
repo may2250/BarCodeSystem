@@ -34,6 +34,10 @@ namespace LongServicesApi
 
         public Stream GetProduct(string querystr)
         {
+            if (mysqlEngine.myCon == null)
+            {
+                mysqlEngine.OpenMysql();
+            }
             TBODY response = new TBODY();
             response.msgcode = 0;
             response.errinfo = "";

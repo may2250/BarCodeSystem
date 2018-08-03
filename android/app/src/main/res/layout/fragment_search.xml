@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.SearchFragment">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/title_search"
+            android:gravity="center"
+            android:textSize="30sp"
+            />
+        <View android:layout_width="match_parent" android:layout_height="@dimen/dp_1"
+            android:background="@color/orange_main"
+            />
+
+        <android.support.v7.widget.CardView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/card_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_2"
+            android:layout_marginRight="@dimen/dp_2"
+            android:layout_marginTop="@dimen/dp_2"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            app:cardCornerRadius="4dp"
+            android:elevation="5dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_tiny">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_40"
+                    android:layout_marginLeft="@dimen/margin_large"
+                    android:layout_marginRight="@dimen/margin_large">
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/db_group"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="@dimen/margin_tiny"
+                        android:layout_marginLeft="@dimen/margin_tiny"
+                        android:orientation="horizontal">
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="车间数据"
+                            android:textSize="@dimen/text_size_small"
+                            android:checked="true"
+                            android:id="@+id/db_btable"/>
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="包装数据"
+                            android:textSize="@dimen/text_size_small"
+                            android:layout_toRightOf="@+id/db_btable"
+                            android:layout_marginLeft="@dimen/margin_tiny"
+                            android:id="@+id/db_packing"/>
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="仓库数据"
+                            android:textSize="@dimen/text_size_small"
+                            android:layout_toRightOf="@+id/db_btable"
+                            android:layout_marginLeft="@dimen/margin_tiny"
+                            android:id="@+id/db_outbound"/>
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_40"
+                    android:layout_marginLeft="@dimen/margin_large"
+                    android:layout_marginRight="@dimen/margin_large">
+                    <TextView
+                        android:id="@+id/info_text"
+                        android:layout_width="@dimen/dp_60"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="@dimen/margin_tiny"
+                        android:layout_marginLeft="@dimen/margin_tiny"
+                        android:textColor="@color/orange_light"
+                        android:text="@string/searchkey"/>
+
+                    <EditText
+                        android:id="@+id/et_searchkey"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/margin_normal"
+                        android:layout_marginBottom="@dimen/margin_tiny"
+                        android:layout_toRightOf="@+id/info_text"
+                        android:background="@null"
+                        android:hint="@string/tip_searchkey"
+                        android:maxLines="1"
+                        android:textColor="@android:color/black"
+                        android:textColorHint="@color/tv_gray_deep"
+                        android:textSize="@dimen/text_size_normal"/>
+
+                    <ImageView
+                        android:id="@+id/iv_barcode"
+                        android:layout_width="@dimen/image_height_litter"
+                        android:layout_height="@dimen/image_height_litter"
+                        android:src="@drawable/barcodescanner"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:scaleType="fitXY"
+                        />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/line_height"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginLeft="@dimen/margin_normal"
+                        android:layout_toRightOf="@+id/info_text"
+                        android:background="@color/orange_main"/>
+
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/btn_search"
+                    android:layout_marginTop="@dimen/dp_6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_orange_selector"
+                    android:src="@drawable/search_l"
+                    android:layout_gravity="center"
+                    android:scaleType="fitXY"
+
+                    />
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/card_detail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_2"
+            android:layout_marginRight="@dimen/dp_2"
+            android:layout_marginTop="@dimen/dp_2"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            app:cardCornerRadius="4dp"
+            android:elevation="5dp">
+
+
+
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+
+
+</FrameLayout>

@@ -18,7 +18,7 @@ import barcode.along.barcode.fragment.SearchFragment;
 public class MainActivity extends BaseActivity {
     private List<Fragment> mFragmentList;
     private Fragment mCurrentFragment;
-    private Toolbar mToolbar;
+    //private Toolbar mToolbar;
 
     @Override
     public int initContentView() {
@@ -27,14 +27,14 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initUIAndListener() {
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        //mToolbar = (Toolbar) findViewById(R.id.toolbar);
 
     }
 
     @Override
     protected void initData() {
-        setSupportActionBar(mToolbar);
-        mToolbar.setTitle(getString(R.string.title_scanner));
+        //setSupportActionBar(mToolbar);
+        //mToolbar.setTitle(getString(R.string.title_scanner));
         mFragmentList = new ArrayList<>();
         mFragmentList.add(ScannerFragment.newInstance());
         mFragmentList.add(SearchFragment.newInstance());
@@ -75,7 +75,7 @@ public class MainActivity extends BaseActivity {
             mCurrentFragment = to;
             FragmentTransaction transaction = getSupportFragmentManager().
                     beginTransaction();
-            mToolbar.setTitle(title);
+            //mToolbar.setTitle(title);
             if (!to.isAdded()) {
                 transaction.hide(from).add(R.id.fragment, to).commit();
             } else {
