@@ -136,8 +136,8 @@ namespace LongServicesApi
             {
                 OpenMysql();
             }
+            response.result = new ArrayList();
             MySqlDataReader reader = null;
-            ArrayList results = new ArrayList();
             try
             {
                 lock (lockobj)
@@ -161,7 +161,7 @@ namespace LongServicesApi
                         data.gpsn = reader.GetString(6);
                         data.sn = reader.GetString(7);
                         data.optdate = reader.GetString(8);
-                        results.Add(data);
+                        response.result.Add(data);
                         flag = true;
                     }
                 }
@@ -175,7 +175,6 @@ namespace LongServicesApi
                 if (reader != null)
                     reader.Close();
             }
-            response.result = results;
             return flag;
         }
 
