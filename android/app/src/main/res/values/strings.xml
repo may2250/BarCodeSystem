@@ -15,6 +15,7 @@
     <string name="searchkey">关键字</string>
     <string name="tip_searchkey">输入要搜索的内容</string>
     <string name="str_query">查询</string>
+    <string name="str_queryresult">查询结果</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

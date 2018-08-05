@@ -3,6 +3,7 @@ package barcode.along.barcode.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -27,6 +28,7 @@ import barcode.along.barcode.LoginActivity;
 import barcode.along.barcode.MainActivity;
 import barcode.along.barcode.R;
 import barcode.along.barcode.Utils.MessageAdapter;
+import barcode.along.barcode.Utils.ToastUtil;
 import barcode.along.barcode.bean.ComMessageBean;
 import barcode.along.barcode.bean.QueryCmdBean;
 import barcode.along.barcode.bean.QueryResultBean;
@@ -41,6 +43,7 @@ public class SearchFragment extends Fragment {
     private ImageView btnsearch;
     private EditText txt_key;
     private TextView result_title;
+    private FloatingActionButton fabtn;
 
     private List<ComMessageBean> comMessageBeans;
 
@@ -76,6 +79,7 @@ public class SearchFragment extends Fragment {
         btnsearch = (ImageView) view.findViewById(R.id.btn_search);
         txt_key = (EditText) view.findViewById(R.id.et_searchkey);
         result_title = (TextView) view.findViewById(R.id.detail_title);
+        fabtn = (FloatingActionButton) view.findViewById(R.id.fab);
 
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.VERTICAL);
@@ -97,7 +101,25 @@ public class SearchFragment extends Fragment {
                 }else{
                     querycmd.setQuerycmd(2);
                 }
-                ApiService.getApiService().getProduct(new HttpObserver<QueryResultBean>() {
+
+                result_title.setText("查询到2条数据.");
+                comMessageBeans = new ArrayList<>();
+                ComMessageBean messageBean = new ComMessageBean();
+                messageBean.setMac("3071B2000001");
+                messageBean.setSn("1252222220");
+                messageBean.setOptdate("2018-08-04");
+                messageBean.setOrderid("SCDD201804240001");
+                comMessageBeans.add(messageBean);
+
+                messageBean = new ComMessageBean();
+                messageBean.setMac("3071B2000002");
+                messageBean.setSn("1252222221");
+                messageBean.setOptdate("2018-08-04");
+                messageBean.setOrderid("SCDD201804240002");
+                comMessageBeans.add(messageBean);
+                MessageAdapter adapter = new MessageAdapter(comMessageBeans);
+                recyclerView.setAdapter(adapter);
+               /* ApiService.getApiService().getProduct(new HttpObserver<QueryResultBean>() {
                     @Override
                     public void onNext(QueryResultBean resultBean) {
                         Log.d("SearchFragment", "onNext: ");
@@ -126,7 +148,14 @@ public class SearchFragment extends Fragment {
                     public void getDisposable(Disposable disposable) {
                         //addDisposable(disposable);
                     }
-                },gson.toJson(querycmd));
+                },gson.toJson(querycmd));*/
+            }
+        });
+
+        fabtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                ToastUtil.showShort("xxxxxxxxxx");
             }
         });
     }
