@@ -159,8 +159,11 @@ namespace LongServicesApi
                         data.mac = reader.GetString(4);
                         data.wifimac = reader.GetString(5);
                         data.gpsn = reader.GetString(6);
-                        data.sn = reader.GetString(7);
+                        data.sn = reader.GetString(7).Replace("\r\n", "");
                         data.optdate = reader.GetString(8);
+                        data.desc = "";
+                        data.softversion = "";
+                        data.destination = "";
                         response.result.Add(data);
                         flag = true;
                     }

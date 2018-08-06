@@ -25,6 +25,9 @@ android {
             dirs 'libs'
         }
     }
+    dataBinding {
+        enabled = true
+    }
     buildToolsVersion '28.0.1'
 }
 

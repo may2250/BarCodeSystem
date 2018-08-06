@@ -32,6 +32,7 @@
                 android:layout_marginBottom="@dimen/margin_tiny">
 
                 <RelativeLayout
+                    android:id="@+id/lay_radio"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp_80"
                     android:layout_marginLeft="@dimen/margin_large"
@@ -73,6 +74,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/lay_search"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp_80"
                     android:layout_marginLeft="@dimen/margin_large"
@@ -125,19 +127,7 @@
                 </RelativeLayout>
 
             </LinearLayout>
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/fab"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right|bottom"
-                android:layout_margin="16dp"
-                android:src="@drawable/barcodescanner"
-                app:backgroundTint="@color/blue"
-                app:borderWidth="0dp"
-                app:elevation="6dp"
-                app:fabSize="normal"
-                app:pressedTranslationZ="10dp"
-                app:rippleColor="@color/blue_semi_transparent" />
+
 
         </android.support.v7.widget.CardView>
 
@@ -177,7 +167,23 @@
 
             </LinearLayout>
 
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|bottom"
+                android:layout_margin="16dp"
+                android:src="@drawable/barcodescanner"
+                app:backgroundTint="@color/blue"
+                app:borderWidth="0dp"
+                app:elevation="6dp"
+                app:fabSize="normal"
+                app:pressedTranslationZ="10dp"
+                app:rippleColor="@color/blue_semi_transparent" />
+
         </android.support.v7.widget.CardView>
+
+
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

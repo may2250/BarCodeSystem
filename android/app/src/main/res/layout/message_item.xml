@@ -1,43 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp">
 
-    <TextView
-        android:id="@+id/product_mac"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:textSize="12sp"
-        android:textColor="@color/tv_gray_normal"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/product_mac"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textSize="12sp"
+            android:textColor="@color/half_black"/>
 
-    <TextView
-        android:id="@+id/product_sn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="12sp"
-        android:textColor="@color/tv_gray_normal"
-        android:layout_marginLeft="5dp"/>
+        <TextView
+            android:id="@+id/product_sn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="12sp"
+            android:textColor="@color/half_black"
+            android:layout_marginLeft="10dp"/>
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/product_orderid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="12sp"
-        android:textColor="@color/tv_gray_normal"
-        android:layout_marginLeft="5dp"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/product_orderid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="10sp"
+            android:textColor="@color/tv_gray_normal"/>
 
-    <TextView
-        android:id="@+id/product_optdate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="12sp"
-        android:textColor="@color/tv_gray_normal"
-        android:layout_marginLeft="5dp"/>
+        <TextView
+            android:id="@+id/product_optdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="10sp"
+            android:textColor="@color/tv_gray_normal"
+            android:layout_marginLeft="10dp"/>
+
+    </LinearLayout>
 
 </LinearLayout>
