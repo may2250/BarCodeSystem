@@ -1,5 +1,6 @@
 package barcode.along.barcode.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -26,6 +27,7 @@ import java.util.List;
 
 import barcode.along.barcode.Api.ApiService;
 import barcode.along.barcode.Api.HttpObserver;
+import barcode.along.barcode.CaptureActivity;
 import barcode.along.barcode.R;
 import barcode.along.barcode.Utils.App;
 import barcode.along.barcode.Utils.CommonFunc;
@@ -35,6 +37,8 @@ import barcode.along.barcode.bean.ComMessageBean;
 import barcode.along.barcode.bean.QueryCmdBean;
 import barcode.along.barcode.bean.QueryResultBean;
 import io.reactivex.disposables.Disposable;
+
+import static android.app.Activity.RESULT_OK;
 
 
 public class SearchFragment extends Fragment {
@@ -120,7 +124,8 @@ public class SearchFragment extends Fragment {
         fabtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(App.INSTANCE, CaptureActivity.class);
+                startActivityForResult(intent,0);
                 _page = 1;
 
             }
@@ -144,6 +149,20 @@ public class SearchFragment extends Fragment {
                 lastVisibleItem = layoutManager.findLastVisibleItemPosition();
             }
         });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode,int resultCode,Intent intent)
+    {
+        super.onActivityResult(requestCode,resultCode,intent);
+        if(requestCode == 0 && resultCode == RESULT_OK){
+            String result = intent.getExtras().getString("ResultQRCode");
+            txt_key.setText(result);
+            if(!result.isEmpty()){
+                _page = 1;
+                searchrecords(false);
+            }
+        }
     }
 
     private void searchrecords(boolean flag){

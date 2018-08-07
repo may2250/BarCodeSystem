@@ -1,5 +1,6 @@
 package barcode.along.barcode;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.bottomnavigation.LabelVisibilityMode;
 import android.support.design.widget.BottomNavigationView;
@@ -85,5 +86,12 @@ public class MainActivity extends BaseActivity {
             }
         }
    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent)
+    {
+        super.onActivityResult(requestCode,resultCode,intent);
+        mCurrentFragment.onActivityResult(requestCode,resultCode,intent);
+    }
 
 }
