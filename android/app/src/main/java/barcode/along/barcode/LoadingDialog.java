@@ -37,6 +37,11 @@ public class LoadingDialog extends ProgressDialog {
         mTitleTv.setText(mMessage);
     }
 
+    @Override
+    public void hide() {
+        super.hide();
+        this.dismiss();
+    }
 
     /**
      * 显示在底部
