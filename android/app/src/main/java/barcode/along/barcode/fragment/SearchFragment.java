@@ -4,6 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.transition.ChangeBounds;
+import android.support.transition.ChangeImageTransform;
+import android.support.transition.TransitionManager;
+import android.support.transition.TransitionSet;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.CardView;
@@ -60,6 +64,7 @@ public class SearchFragment extends Fragment {
     private static final int _num = 10;
     private boolean hasmore = true;
     private int lastVisibleItem;
+    private ViewGroup transitionsContainer;
 
 
     private List<ComMessageBean> comMessageBeans;
@@ -84,6 +89,7 @@ public class SearchFragment extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_search, container, false);
         // Inflate the layout for this fragment
+        transitionsContainer = (ViewGroup) view.findViewById(R.id.search_container);
         return view;
     }
 
@@ -136,7 +142,7 @@ public class SearchFragment extends Fragment {
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
                 if (newState ==RecyclerView.SCROLL_STATE_IDLE && lastVisibleItem + 1 == adapter.getItemCount()) {
-                    if(hasmore){
+                    if(hasmore && txt_key.getText().length() > 0){
                         _page += 1;
                         searchrecords(true);
 
@@ -200,6 +206,9 @@ public class SearchFragment extends Fragment {
             @Override
             public void onNext(QueryResultBean resultBean) {
                 if(!flag){
+                    TransitionManager.beginDelayedTransition(transitionsContainer, new TransitionSet()
+                            .addTransition(new ChangeBounds())
+                            .addTransition(new ChangeImageTransform()));
                     result_title.setText("查询到" + resultBean.getResultcnt() + "条数据.");
                     if(resultBean.getResultcnt() > 0){
                         LinearLayout.LayoutParams linearParams =(LinearLayout.LayoutParams) headercard.getLayoutParams();

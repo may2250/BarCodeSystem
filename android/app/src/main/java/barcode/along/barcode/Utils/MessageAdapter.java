@@ -27,7 +27,7 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public static final int  LOADING_END=2;
     private static final int TYPE_ITEM =0;  //普通Item View
     private static final int TYPE_FOOTER = 1;  //底部FootView
-    private int load_more_status=0;
+    private int load_more_status=-1;
 
     public MessageAdapter(List<ComMessageBean> messageList){
         this.mMessageList = messageList;
@@ -78,6 +78,9 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                     break;
                 case LOADING_END:
                     footViewHolder.foot_view_item_tv.setText("没有更多了...");
+                    break;
+                default:
+                    footViewHolder.foot_view_item_tv.setText("无数据");
                     break;
             }
         }

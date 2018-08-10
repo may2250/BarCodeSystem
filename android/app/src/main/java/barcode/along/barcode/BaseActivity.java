@@ -3,6 +3,10 @@ package barcode.along.barcode;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.transition.Explode;
+import android.transition.Slide;
+import android.transition.TransitionInflater;
+import android.view.Gravity;
 
 import barcode.along.barcode.Api.ApiService;
 import io.reactivex.disposables.CompositeDisposable;
@@ -20,6 +24,12 @@ public abstract class BaseActivity extends AppCompatActivity {
         setContentView(initContentView());
         initUIAndListener();
         initData();
+        getWindow().setExitTransition(TransitionInflater.from(this).inflateTransition(R.transition.slide));
+        Slide slide=new Slide();
+        slide.setDuration(500);
+        slide.setSlideEdge(Gravity.LEFT);
+        getWindow().setEnterTransition(slide);
+        getWindow().setReenterTransition(new Explode().setDuration(600));
     }
 
     public abstract int initContentView();

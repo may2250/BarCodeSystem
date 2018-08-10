@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.bottomnavigation.LabelVisibilityMode;
 import android.support.design.widget.BottomNavigationView;
+import android.support.transition.ChangeBounds;
+import android.support.transition.TransitionSet;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.MenuItem;
@@ -78,7 +80,8 @@ public class MainActivity extends BaseActivity {
             mCurrentFragment = to;
             FragmentTransaction transaction = getSupportFragmentManager().
                     beginTransaction();
-            //mToolbar.setTitle(title);
+
+
             if (!to.isAdded()) {
                 transaction.hide(from).add(R.id.fragment, to).commit();
             } else {

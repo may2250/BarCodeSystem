@@ -1,6 +1,7 @@
 package barcode.along.barcode;
 
 import android.content.Intent;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
@@ -199,8 +200,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 Log.d("MainActivity", userBean.getUsername());
                 loadCheckBoxState(checkBox_password, checkBox_login);
                 mLoadingDialog.hide();
-                startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                finish();//关闭页面
+                //startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                //finish();//关闭页面
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(LoginActivity.this);
+                startActivity(intent,activityOptionsCompat.toBundle());
             }
 
             @Override
