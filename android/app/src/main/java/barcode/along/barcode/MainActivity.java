@@ -8,6 +8,9 @@ import android.support.transition.ChangeBounds;
 import android.support.transition.TransitionSet;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.transition.Slide;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuItem;
 
 import java.util.ArrayList;
@@ -78,14 +81,16 @@ public class MainActivity extends BaseActivity {
    public void switchFragment(Fragment from, Fragment to, CharSequence title) {
         if (mCurrentFragment != to) {
             mCurrentFragment = to;
+            mCurrentFragment.setSharedElementEnterTransition(new android.transition.ChangeBounds());
+            mCurrentFragment.setEnterTransition(new Slide(Gravity.RIGHT));
             FragmentTransaction transaction = getSupportFragmentManager().
                     beginTransaction();
 
 
             if (!to.isAdded()) {
-                transaction.hide(from).add(R.id.fragment, to).commit();
+                transaction.hide(from).add(R.id.fragment, to).addToBackStack(null).commit();
             } else {
-                transaction.hide(from).show(to).commit();
+                transaction.hide(from).show(to).addToBackStack(null).commit();
             }
         }
    }
