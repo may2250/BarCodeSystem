@@ -2,6 +2,7 @@ package barcode.along.barcode.Api;
 
 import java.util.Map;
 
+import barcode.along.barcode.bean.ComMessageBean;
 import barcode.along.barcode.bean.HttpResult;
 import barcode.along.barcode.bean.QueryResultBean;
 import barcode.along.barcode.bean.UserBean;
@@ -15,12 +16,15 @@ import retrofit2.http.QueryMap;
 public interface ApiInterface {
 
     /**
-     * 获取健康信息
+     * 获取信息
      */
     @POST("Auth")
     Observable<HttpResult<UserBean>> auth(@Body String str);
 
     @GET("Product/{querystr}")
     Observable<HttpResult<QueryResultBean>> getProduct(@Path("querystr") String querystr);
+
+    @POST("Outbound")
+    Observable<HttpResult> outbound(@Body String str);
 
 }

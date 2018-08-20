@@ -61,5 +61,27 @@ namespace LongServicesApi
             response.data = qr;
             return new MemoryStream(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(response)));
         }
+
+        public Stream Outbound(string data)
+        {
+            if (mysqlEngine.myCon == null)
+            {
+                mysqlEngine.OpenMysql();
+            }
+            TBODY boundbody = Common.DeserializeJsonToObject<TBODY>(data);
+            TBODY response = new TBODY();
+            response.msgcode = 0;
+            response.errinfo = "";
+            if (mysqlEngine.InsertOutRecord(boundbody.data.ToString(), ref response))
+            {
+                response.status = 0;
+            }
+            else
+            {
+                response.status = -1;
+            }
+
+            return new MemoryStream(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(response)));
+        }
     }
 }

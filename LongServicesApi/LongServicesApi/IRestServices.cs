@@ -18,11 +18,16 @@ namespace LongServicesApi
         [OperationContract]
         [WebGet(UriTemplate = Routing.GetProduct, BodyStyle = WebMessageBodyStyle.Bare, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         Stream GetProduct(string querystr);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = Routing.Outbound, BodyStyle = WebMessageBodyStyle.Bare, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        Stream Outbound(string tbody);
     }
 
     public static class Routing
     {
         public const string UserAuth = "/Auth";
         public const string GetProduct = "/Product/{querystr}";
+        public const string Outbound = "/Outbound";
     }
 }

@@ -13,7 +13,12 @@
     <string name="title_about">关于</string>
 
     <string name="searchkey">关键字</string>
+    <string name="softkey">软件版本</string>
+    <string name="dstkey">出货地址</string>
     <string name="tip_searchkey">输入要搜索的内容</string>
+    <string name="tip_scannerkey">输入要出库的设备</string>
+    <string name="tip_dstkey">输入出货地址</string>
+    <string name="tip_softversion">输入软件版本</string>
     <string name="str_query">查询</string>
     <string name="str_queryresult">查询结果</string>
 

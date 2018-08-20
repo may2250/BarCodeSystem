@@ -181,5 +181,145 @@ namespace LongServicesApi
             return flag;
         }
 
+        /// <summary>
+        /// 验证数据
+        /// </summary>
+        /// <param name="cm"></param>
+        /// <param name="tbl">数据库表</param>
+        public bool getOutValidate(string sqlstr)
+        {
+            bool flag = true;
+            MySqlDataReader reader = null;
+            try
+            {
+                if (myCon.State == System.Data.ConnectionState.Closed || myCon.State == System.Data.ConnectionState.Broken)
+                {
+                    OpenMysql();
+                }
+                lock (lockobj)
+                {
+                    MySqlCommand mySqlCommand = getSqlCommand(sqlstr, myCon);
+                    reader = mySqlCommand.ExecuteReader();
+                }
+
+                while (reader.Read())
+                {
+                    if (reader.HasRows)
+                    {
+                        flag = false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                flag = false;
+            }
+            finally
+            {
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+            }
+            return flag;
+        }
+
+        public bool InsertOutRecord(string outdata, ref TBODY resp)
+        {
+            string sqlstr = "";
+            bool flag = false;
+            bool dup = false;
+            ComMessage_t data = new ComMessage_t();
+            string[] resultString = outdata.Split(new string[] { "|" }, StringSplitOptions.None);
+            switch (resultString[0])
+            {
+                case "sn":
+                    sqlstr = "select id from outbound where sn = '" + resultString[1] + "'";
+                    if (!getOutValidate(sqlstr))
+                    {
+                        resp.errinfo = "重复的设备，该设备已出库...";
+                        dup = true;
+                        //return false;
+                    }
+                    sqlstr = "select * from packing where sn = '" + resultString[1] + "'";
+                    break;
+                case "mac":
+                    sqlstr = "select id from outbound where mac = '" + resultString[1] + "'";
+                    if (!getOutValidate(sqlstr))
+                    {
+                        resp.errinfo = "重复的设备，该设备已出库...";
+                        dup = true;
+                        //return false;
+                    }
+                    sqlstr = "select * from packing where mac = '" + resultString[1] + "'";
+                    break;
+
+            }
+
+            //从包装部数据表查询出库数据
+            MySqlCommand mySqlCommand = null;
+            MySqlDataReader reader = null;
+            
+            try
+            {
+                lock (lockobj)
+                {
+                    mySqlCommand = getSqlCommand(sqlstr, myCon);
+                    reader = mySqlCommand.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        if (reader.HasRows)
+                        {
+                            data.username = reader.GetString(1);
+                            data.boxid = reader.GetString(2);
+                            data.orderid = reader.GetString(3);
+                            data.mac = reader.GetString(4);
+                            data.wifimac = reader.GetString(5);
+                            data.gpsn = reader.GetString(6);
+                            data.sn = reader.GetString(7);
+                            data.optdate = reader.GetString(8);
+                            data.softversion = reader.GetString(9);
+
+                            if (data.softversion != resultString[2])
+                            {
+                                flag = false;
+                                resp.errinfo = "软件版本不一致，请核对软件版本[" + data.softversion + "]";
+                                break;
+                            }
+                            flag = true;
+                        }
+                    }
+                }
+
+            }
+            catch (Exception)
+            {
+                flag = false;
+                resp.errinfo = "从包装数据表提取数据失败。";
+            }
+            finally
+            {
+                if (reader != null)
+                    reader.Close();
+            }
+            if (data == null)
+            {
+                resp.errinfo = "从包装数据表无改设备。";
+                return false;
+            }
+            if (!dup && flag)
+            {
+                //将数据插入到出库表单
+                sqlstr = string.Format("INSERT INTO outbound(username,boxid,orderid,mac,wifimac,gpsn,sn,optdate,destination,softversion) VALUES('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')", data.username, data.boxid.ToUpper(), data.orderid, data.mac.ToUpper(), data.wifimac == null ? "" : data.wifimac.ToUpper(), data.gpsn == null ? "" : data.gpsn, data.sn.ToUpper(), DateTime.Now.ToString("yyyy-MM-dd"), resultString[3], data.softversion);
+                if (!Execute(sqlstr))
+                {
+                    resp.errinfo = "记录数据失败。";
+                    return false;
+                }
+            }
+            resp.data = data;
+            return (flag && !dup);
+        }
+
     }
 }

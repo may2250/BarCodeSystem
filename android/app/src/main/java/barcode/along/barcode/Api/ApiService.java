@@ -4,6 +4,8 @@ import java.util.concurrent.TimeUnit;
 
 import barcode.along.barcode.Utils.RequestInterceptor;
 import barcode.along.barcode.Utils.ResponseInterceptor;
+import barcode.along.barcode.bean.ComMessageBean;
+import barcode.along.barcode.bean.HttpResult;
 import barcode.along.barcode.bean.QueryResultBean;
 import barcode.along.barcode.bean.UserBean;
 import io.reactivex.Observer;
@@ -72,12 +74,21 @@ public class ApiService {
     }
 
     /**
-     * 验证用户
+     * 查询设备
      */
     public void getProduct(Observer<QueryResultBean> observer, String str) {
         mApiInterface.getProduct(str)
                 .compose(SchedulersTransformer.io_main())
                 .map(new HttpResultFunc<>())
+                .subscribe(observer);
+    }
+
+    /**
+     * 设备出库扫描
+     */
+    public void outBound(Observer<HttpResult> observer, String str) {
+        mApiInterface.outbound(str)
+                .compose(SchedulersTransformer.io_main())
                 .subscribe(observer);
     }
 

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <LinearLayout
         android:orientation="vertical"
         android:id="@+id/scanner_contain"
@@ -9,19 +10,198 @@
         android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/margin_tiny">
 
-        <Button android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="DO MAGIC"/>
+        <android.support.v7.widget.CardView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/card_header"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_2"
+            android:layout_marginRight="@dimen/dp_2"
+            android:layout_marginTop="@dimen/dp_4"
+            android:layout_marginBottom="@dimen/dp_4"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            app:cardCornerRadius="4dp"
+            android:elevation="5dp">
 
-        <TextView
-            android:id="@+id/text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Transitions are awesome!"
-            android:textColor="@color/orange_deep"
-            android:visibility="gone"/>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_tiny">
+
+                <RelativeLayout
+                    android:id="@+id/lay_radio"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_80"
+                    android:layout_marginLeft="@dimen/margin_large"
+                    android:layout_marginRight="@dimen/margin_large">
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/sc_group"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="@dimen/margin_tiny"
+                        android:layout_marginLeft="@dimen/margin_tiny"
+                        android:orientation="horizontal">
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="MAC扫描"
+                            android:textSize="@dimen/text_size_small"
+                            android:checked="true"
+                            android:id="@+id/sc_mac"/>
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="SN扫描"
+                            android:textSize="@dimen/text_size_small"
+                            android:layout_toRightOf="@+id/sc_mac"
+                            android:layout_marginLeft="@dimen/margin_tiny"
+                            android:id="@+id/sc_sn"/>
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/lay_softversion"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_80"
+                    android:layout_marginLeft="@dimen/margin_large"
+                    android:layout_marginRight="@dimen/margin_large">
+                    <TextView
+                        android:id="@+id/info_softversion"
+                        android:layout_width="@dimen/dp_60"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="@dimen/margin_tiny"
+                        android:layout_marginLeft="@dimen/margin_tiny"
+                        android:textColor="@color/orange_light"
+                        android:text="@string/softkey"/>
+
+                    <EditText
+                        android:id="@+id/et_softversion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/margin_normal"
+                        android:layout_marginBottom="@dimen/margin_tiny"
+                        android:layout_toRightOf="@+id/info_softversion"
+                        android:background="@null"
+                        android:hint="@string/tip_softversion"
+                        android:maxLines="1"
+                        android:textColor="@android:color/black"
+                        android:textColorHint="@color/tv_gray_deep"
+                        android:textSize="@dimen/text_size_normal"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/lay_desition"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_40"
+                    android:layout_marginLeft="@dimen/margin_large"
+                    android:layout_marginRight="@dimen/margin_large">
+                    <TextView
+                        android:id="@+id/info_desition"
+                        android:layout_width="@dimen/dp_60"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="@dimen/margin_tiny"
+                        android:layout_marginLeft="@dimen/margin_tiny"
+                        android:textColor="@color/orange_light"
+                        android:text="@string/dstkey"/>
+
+                    <EditText
+                        android:id="@+id/et_dst"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/margin_normal"
+                        android:layout_marginBottom="@dimen/margin_tiny"
+                        android:layout_toRightOf="@+id/info_desition"
+                        android:background="@null"
+                        android:hint="@string/tip_dstkey"
+                        android:maxLines="1"
+                        android:textColor="@android:color/black"
+                        android:textColorHint="@color/tv_gray_deep"
+                        android:textSize="@dimen/text_size_normal"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/lay_scanner"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_40"
+                    android:layout_marginLeft="@dimen/margin_large"
+                    android:layout_marginRight="@dimen/margin_large">
+                    <TextView
+                        android:id="@+id/info_text"
+                        android:layout_width="@dimen/dp_60"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="@dimen/margin_tiny"
+                        android:layout_marginLeft="@dimen/margin_tiny"
+                        android:textColor="@color/orange_light"
+                        android:text="@string/searchkey"/>
+
+                    <EditText
+                        android:id="@+id/et_key"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/margin_normal"
+                        android:layout_marginBottom="@dimen/margin_tiny"
+                        android:layout_toRightOf="@+id/info_text"
+                        android:background="@null"
+                        android:hint="@string/tip_scannerkey"
+                        android:maxLines="1"
+                        android:textColor="@android:color/black"
+                        android:textColorHint="@color/tv_gray_deep"
+                        android:textSize="@dimen/text_size_normal"/>
+
+                    <ImageView
+                        android:id="@+id/btn_search"
+                        android:layout_width="@dimen/dp_20"
+                        android:layout_height="@dimen/dp_20"
+                        android:layout_marginBottom="@dimen/margin_tiny"
+                        android:src="@drawable/search_l"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        android:scaleType="fitXY"
+                        />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/line_height"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginLeft="@dimen/margin_normal"
+                        android:layout_toRightOf="@+id/info_text"
+                        android:background="@color/orange_main"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|bottom"
+                android:layout_margin="16dp"
+                android:src="@drawable/barcodescanner"
+                app:backgroundTint="@color/blue"
+                app:borderWidth="0dp"
+                app:elevation="6dp"
+                app:fabSize="normal"
+                app:pressedTranslationZ="10dp"
+                app:rippleColor="@color/blue_semi_transparent" />
+
+        </android.support.v7.widget.CardView>
+
+
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
