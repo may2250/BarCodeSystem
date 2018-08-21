@@ -6,3 +6,11 @@ rxjava2+retrofit2+okhttp3
 登录界面
 
 ![image](https://github.com/may2250/BarCodeSystem/blob/master/imgs/login.png)
+
+出库界面
+
+![image](https://github.com/may2250/BarCodeSystem/blob/master/imgs/20180821155120.png)
+
+查询界面
+
+![image](https://github.com/may2250/BarCodeSystem/blob/master/imgs/20180821155210.png)
