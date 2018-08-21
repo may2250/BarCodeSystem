@@ -26,7 +26,7 @@
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginBottom="@dimen/margin_tiny">
 
                 <RelativeLayout
@@ -47,14 +47,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="MAC扫描"
-                            android:textSize="@dimen/text_size_small"
+                            android:textSize="@dimen/text_size_tiny"
                             android:checked="true"
                             android:id="@+id/sc_mac"/>
                         <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="SN扫描"
-                            android:textSize="@dimen/text_size_small"
+                            android:textSize="@dimen/text_size_tiny"
                             android:layout_toRightOf="@+id/sc_mac"
                             android:layout_marginLeft="@dimen/margin_tiny"
                             android:id="@+id/sc_sn"/>
@@ -62,126 +62,90 @@
 
                 </RelativeLayout>
 
-                <RelativeLayout
-                    android:id="@+id/lay_softversion"
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/til_softversion"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_80"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/margin_large"
-                    android:layout_marginRight="@dimen/margin_large">
-                    <TextView
-                        android:id="@+id/info_softversion"
-                        android:layout_width="@dimen/dp_60"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginBottom="@dimen/margin_tiny"
-                        android:layout_marginLeft="@dimen/margin_tiny"
-                        android:textColor="@color/orange_light"
-                        android:text="@string/softkey"/>
+                    android:layout_marginRight="@dimen/margin_large"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="@dimen/dp_16">
 
-                    <EditText
+                    <android.support.design.widget.TextInputEditText
                         android:id="@+id/et_softversion"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="@dimen/margin_normal"
-                        android:layout_marginBottom="@dimen/margin_tiny"
-                        android:layout_toRightOf="@+id/info_softversion"
-                        android:background="@null"
-                        android:hint="@string/tip_softversion"
-                        android:maxLines="1"
-                        android:textColor="@android:color/black"
-                        android:textColorHint="@color/tv_gray_deep"
-                        android:textSize="@dimen/text_size_normal"/>
+                        android:drawablePadding="@dimen/dp_4"
+                        android:gravity="center_vertical"
+                        android:hint="@string/tip_softversion"/>
 
-                </RelativeLayout>
+                </android.support.design.widget.TextInputLayout>
 
-                <RelativeLayout
-                    android:id="@+id/lay_desition"
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/til_desition"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_40"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/margin_large"
-                    android:layout_marginRight="@dimen/margin_large">
-                    <TextView
-                        android:id="@+id/info_desition"
-                        android:layout_width="@dimen/dp_60"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginBottom="@dimen/margin_tiny"
-                        android:layout_marginLeft="@dimen/margin_tiny"
-                        android:textColor="@color/orange_light"
-                        android:text="@string/dstkey"/>
+                    android:layout_marginRight="@dimen/margin_large"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="@dimen/dp_2">
 
-                    <EditText
+                    <android.support.design.widget.TextInputEditText
                         android:id="@+id/et_dst"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="@dimen/margin_normal"
-                        android:layout_marginBottom="@dimen/margin_tiny"
-                        android:layout_toRightOf="@+id/info_desition"
-                        android:background="@null"
-                        android:hint="@string/tip_dstkey"
-                        android:maxLines="1"
-                        android:textColor="@android:color/black"
-                        android:textColorHint="@color/tv_gray_deep"
-                        android:textSize="@dimen/text_size_normal"/>
+                        android:drawablePadding="@dimen/dp_4"
+                        android:gravity="center_vertical"
+                        android:hint="@string/tip_dstkey"/>
 
-                </RelativeLayout>
+                </android.support.design.widget.TextInputLayout>
 
-                <RelativeLayout
-                    android:id="@+id/lay_scanner"
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/til_key"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_40"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/margin_large"
-                    android:layout_marginRight="@dimen/margin_large">
-                    <TextView
-                        android:id="@+id/info_text"
-                        android:layout_width="@dimen/dp_60"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginBottom="@dimen/margin_tiny"
-                        android:layout_marginLeft="@dimen/margin_tiny"
-                        android:textColor="@color/orange_light"
-                        android:text="@string/searchkey"/>
+                    android:layout_marginRight="@dimen/margin_large"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="@dimen/dp_2">
 
-                    <EditText
+                    <android.support.design.widget.TextInputEditText
                         android:id="@+id/et_key"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="@dimen/margin_normal"
-                        android:layout_marginBottom="@dimen/margin_tiny"
-                        android:layout_toRightOf="@+id/info_text"
-                        android:background="@null"
-                        android:hint="@string/tip_scannerkey"
-                        android:maxLines="1"
-                        android:textColor="@android:color/black"
-                        android:textColorHint="@color/tv_gray_deep"
-                        android:textSize="@dimen/text_size_normal"/>
+                        android:drawablePadding="@dimen/dp_4"
+                        android:gravity="center_vertical"
+                        android:hint="@string/tip_scannerkey"/>
 
-                    <ImageView
-                        android:id="@+id/btn_search"
-                        android:layout_width="@dimen/dp_20"
-                        android:layout_height="@dimen/dp_20"
-                        android:layout_marginBottom="@dimen/margin_tiny"
-                        android:src="@drawable/search_l"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignParentRight="true"
-                        android:scaleType="fitXY"
-                        />
+                </android.support.design.widget.TextInputLayout>
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/line_height"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginLeft="@dimen/margin_normal"
-                        android:layout_toRightOf="@+id/info_text"
-                        android:background="@color/orange_main"/>
+                <Button
+                    android:id="@+id/btn_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_large"
+                    android:layout_marginRight="@dimen/margin_large"
+                    android:background="@drawable/btn_orange_selector"
+                    android:text="出库" />
 
-                </RelativeLayout>
+                <TextView
+                    android:id="@+id/outbound_count"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_large"
+                    android:layout_marginRight="@dimen/margin_large"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:textSize="@dimen/dp_10"
+                    android:layout_gravity="bottom"
+                    android:text="当前出库数量:0"/>
+
+                <ListView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/margin_large"
+                    android:layout_marginRight="@dimen/margin_large"
+                    android:id="@+id/list_view" />
+
 
             </LinearLayout>
 
@@ -200,8 +164,6 @@
                 app:rippleColor="@color/blue_semi_transparent" />
 
         </android.support.v7.widget.CardView>
-
-
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
