@@ -20,6 +20,7 @@ import barcode.along.barcode.Utils.ActivityUtils;
 import barcode.along.barcode.fragment.AboutFragment;
 import barcode.along.barcode.fragment.ScannerFragment;
 import barcode.along.barcode.fragment.SearchFragment;
+import barcode.along.barcode.fragment.SettingFragment;
 
 public class MainActivity extends BaseActivity {
     private List<Fragment> mFragmentList;
@@ -43,6 +44,7 @@ public class MainActivity extends BaseActivity {
         mFragmentList = new ArrayList<>();
         mFragmentList.add(ScannerFragment.newInstance());
         mFragmentList.add(SearchFragment.newInstance());
+        mFragmentList.add(SettingFragment.newInstance());
         mFragmentList.add(AboutFragment.newInstance());
 
         ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), mFragmentList.get(0), R.id.fragment);
@@ -68,8 +70,12 @@ public class MainActivity extends BaseActivity {
                     switchFragment(mCurrentFragment, mFragmentList.get(1), item.getTitle());
                     //viewPager.setCurrentItem(1);
                     return true;
-                case R.id.navigation_about:
+                case R.id.navigation_setting:
                     switchFragment(mCurrentFragment, mFragmentList.get(2), item.getTitle());
+                    //viewPager.setCurrentItem(1);
+                    return true;
+                case R.id.navigation_about:
+                    switchFragment(mCurrentFragment, mFragmentList.get(3), item.getTitle());
                     //viewPager.setCurrentItem(2);
                     return true;
             }

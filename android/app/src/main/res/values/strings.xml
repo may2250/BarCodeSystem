@@ -22,6 +22,8 @@
     <string name="str_query">查询</string>
     <string name="str_queryresult">查询结果</string>
 
+    <string name="st_header">登录配置</string>
+
     <string name="app_picker_name">Applications</string>
     <string name="bookmark_picker_name">Bookmarks</string>
     <string name="button_add_calendar">Add to calendar</string>
