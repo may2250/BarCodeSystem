@@ -92,12 +92,12 @@ public class MainActivity extends BaseActivity {
             FragmentTransaction transaction = getSupportFragmentManager().
                     beginTransaction();
 
-
-            if (!to.isAdded()) {
+            transaction.replace(R.id.fragment,mCurrentFragment).commit();
+            /*if (!to.isAdded()) {
                 transaction.hide(from).add(R.id.fragment, to).addToBackStack(null).commit();
             } else {
                 transaction.hide(from).show(to).addToBackStack(null).commit();
-            }
+            }*/
         }
    }
 
