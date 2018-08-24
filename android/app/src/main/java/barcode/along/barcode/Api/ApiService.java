@@ -1,4 +1,5 @@
 package barcode.along.barcode.Api;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -89,6 +90,16 @@ public class ApiService {
     public void outBound(Observer<HttpResult> observer, String str) {
         mApiInterface.outbound(str)
                 .compose(SchedulersTransformer.io_main())
+                .subscribe(observer);
+    }
+
+    /**
+     * 查询设备
+     */
+    public void getStatistic(Observer<List> observer, String str) {
+        mApiInterface.getStatistic(str)
+                .compose(SchedulersTransformer.io_main())
+                .map(new HttpResultFunc<>())
                 .subscribe(observer);
     }
 

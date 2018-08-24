@@ -24,6 +24,8 @@ android {
         flatDir {
             dirs 'libs'
         }
+
+        maven { url 'https://jitpack.io' }
     }
 
 
@@ -56,6 +58,9 @@ dependencies {
     implementation 'com.android.support:support-v4:28.0.0-beta01'
 
     implementation 'com.google.zxing:core:3.3.0'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
+    //jxl excel工具
+    implementation 'com.hynnet:jxl:2.6.12.1'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'

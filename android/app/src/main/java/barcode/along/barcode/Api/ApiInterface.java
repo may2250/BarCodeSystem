@@ -1,5 +1,6 @@
 package barcode.along.barcode.Api;
 
+import java.util.List;
 import java.util.Map;
 
 import barcode.along.barcode.bean.ComMessageBean;
@@ -26,5 +27,8 @@ public interface ApiInterface {
 
     @POST("Outbound")
     Observable<HttpResult> outbound(@Body String str);
+
+    @POST("GetStatistic")
+    Observable<HttpResult<List>> getStatistic(@Body String str);
 
 }

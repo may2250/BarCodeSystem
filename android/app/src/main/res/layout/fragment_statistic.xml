@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_height_normal"
+            android:layout_marginTop="@dimen/dp_15"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10">
+            <TextView
+                android:id="@+id/txtstart"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/orange_light"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:layout_alignParentBottom="true"
+                android:text="起始日期:"/>
+            <EditText
+                android:id="@+id/cld_start"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/dp_10"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/margin_tiny"
+                android:layout_alignParentBottom="true"
+                android:layout_toRightOf="@+id/txtstart"/>
+            <ImageView
+                android:id="@+id/qstart"
+                android:layout_width="@dimen/dp_24"
+                android:layout_height="@dimen/dp_24"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:scaleType="fitXY"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:src="@drawable/ic_date_range_yellow_900_24dp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_height_normal"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10">
+            <TextView
+                android:id="@+id/txtend"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:textColor="@color/orange_light"
+                android:layout_alignParentBottom="true"
+                android:text="截止日期:"/>
+            <EditText
+                android:id="@+id/cld_end"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/dp_10"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/margin_tiny"
+                android:layout_alignParentBottom="true"
+                android:layout_toRightOf="@+id/txtend"/>
+            <ImageView
+                android:id="@+id/qend"
+                android:layout_width="@dimen/dp_24"
+                android:layout_height="@dimen/dp_24"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:scaleType="fitXY"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:src="@drawable/ic_date_range_yellow_900_24dp"/>
+        </RelativeLayout>
+        <Button
+            android:id="@+id/btn_query"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:layout_marginRight="@dimen/margin_large"
+            android:background="@drawable/btn_orange_selector"
+            android:text="搜索" />
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/chart1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white" />
+
+    </LinearLayout>
+
+
+
+</android.support.constraint.ConstraintLayout>

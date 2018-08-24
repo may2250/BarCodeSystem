@@ -8,3 +8,4 @@ F:\project\android\BarCodeSystem\LongServicesApi\LongServicesApi\bin\Debug\LongS
 F:\project\android\BarCodeSystem\LongServicesApi\LongServicesApi\bin\Debug\LongServicesApi.pdb
 F:\project\android\BarCodeSystem\LongServicesApi\LongServicesApi\obj\Debug\LongServicesApi.dll
 F:\project\android\BarCodeSystem\LongServicesApi\LongServicesApi\obj\Debug\LongServicesApi.pdb
+F:\project\android\BarCodeSystem\LongServicesApi\LongServicesApi\obj\Debug\LongServicesApi.csprojResolveAssemblyReference.cache

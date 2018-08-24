@@ -22,6 +22,10 @@ namespace LongServicesApi
         [OperationContract]
         [WebInvoke(Method = "POST", UriTemplate = Routing.Outbound, BodyStyle = WebMessageBodyStyle.Bare, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         Stream Outbound(string tbody);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = Routing.GetStatistic, BodyStyle = WebMessageBodyStyle.Bare, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        Stream GetStatistics(string tbody);
     }
 
     public static class Routing
@@ -29,5 +33,6 @@ namespace LongServicesApi
         public const string UserAuth = "/Auth";
         public const string GetProduct = "/Product/{querystr}";
         public const string Outbound = "/Outbound";
+        public const string GetStatistic = "/GetStatistic";
     }
 }

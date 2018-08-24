@@ -13,9 +13,10 @@ namespace LongServicesApi
         public MySqlConnection myCon = null;
         private static object lockobj = new object();
         System.Timers.Timer dbtimer = new System.Timers.Timer();
+        string M_str_sqlcon = "";
         public bool OpenMysql()
         {
-            string M_str_sqlcon = "server=127.0.0.1;user id=root;password=prevail;database=db_storege;Charset=utf8;"; //根据自己的设置
+            M_str_sqlcon = "server=127.0.0.1;user id=root;password=prevail;database=db_storege;Charset=utf8;"; //根据自己的设置
             myCon = new MySqlConnection(M_str_sqlcon);
             try
             {
@@ -319,6 +320,49 @@ namespace LongServicesApi
             }
             resp.data = data;
             return (flag && !dup);
+        }
+
+        public bool getStatistic(string outdata, ref TBODY resp)
+        {
+            List<int> statstic = new List<int>();
+            using (MySqlConnection con = new MySqlConnection(M_str_sqlcon))
+            {
+                con.Open();
+                string[] resultString = outdata.Split(new string[] { "|" }, StringSplitOptions.None);
+                string sqlstr = "select count(*) from outbound where optdate >= '" + resultString[0] + "' and optdate <= '" + resultString[1] + "' and mac like '3071B2%'";
+                using (MySqlCommand cmd = new MySqlCommand(sqlstr, con))
+                {
+                    //MySqlTransaction trans = con.BeginTransaction();
+                    try
+                    {
+                        //cmd.Connection = trans.Connection;
+                        //cmd.Transaction = trans;
+                        cmd.CommandText = sqlstr;
+                        statstic.Add(Convert.ToInt32(cmd.ExecuteScalar()));
+
+                        sqlstr = "select count(*) from outbound where optdate >= '" + resultString[0] + "' and optdate <= '" + resultString[1] + "' and mac like '000A5A%'";
+                        cmd.CommandText = sqlstr;
+                        statstic.Add(Convert.ToInt32(cmd.ExecuteScalar()));
+
+                        sqlstr = "select count(*) from outbound where optdate >= '" + resultString[0] + "' and optdate <= '" + resultString[1] + "'";
+                        cmd.CommandText = sqlstr;
+                        statstic.Add(Convert.ToInt32(cmd.ExecuteScalar()) - statstic[0] - statstic[1]);
+                    }
+                    catch
+                    {
+                        resp.errinfo = "统计出现未知错误.";
+                        resp.data = statstic;
+                        return false;
+                    }
+                    finally
+                    {
+                        
+                    }
+                }
+
+            }
+            resp.data = statstic;
+            return true;
         }
 
     }

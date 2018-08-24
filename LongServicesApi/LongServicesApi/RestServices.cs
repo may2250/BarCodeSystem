@@ -83,5 +83,27 @@ namespace LongServicesApi
 
             return new MemoryStream(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(response)));
         }
+
+        public Stream GetStatistics(string data)
+        {
+            if (mysqlEngine.myCon == null)
+            {
+                mysqlEngine.OpenMysql();
+            }
+            TBODY querybody = Common.DeserializeJsonToObject<TBODY>(data);
+            TBODY response = new TBODY();
+            response.msgcode = 0;
+            response.errinfo = "";
+            if (mysqlEngine.getStatistic(querybody.data.ToString(), ref response))
+            {
+                response.status = 0;
+            }
+            else
+            {
+                response.status = -1;
+            }
+
+            return new MemoryStream(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(response)));
+        }
     }
 }

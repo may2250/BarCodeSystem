@@ -184,24 +184,7 @@ public class SearchFragment extends Fragment {
         }else{
             querycmd.setQuerycmd(2);
         }
-                /*result_title.setText("查询到2条数据.");
-                comMessageBeans = new ArrayList<>();
-                ComMessageBean messageBean = new ComMessageBean();
-                messageBean.setMac("3071B2000001");
-                messageBean.setSn("1252222220");
-                messageBean.setOptdate("2018-08-04");
-                messageBean.setOrderid("SCDD201804240001");
-                comMessageBeans.add(messageBean);
 
-                messageBean = new ComMessageBean();
-                messageBean.setMac("3071B2000002");
-                messageBean.setSn("1252222221");
-                messageBean.setOptdate("2018-08-04");
-                messageBean.setOrderid("SCDD201804240002");
-                comMessageBeans.add(messageBean);
-                MessageAdapter adapter = new MessageAdapter(comMessageBeans);
-                recyclerView.setAdapter(adapter);
-                */
         ApiService.getApiService().getProduct(new HttpObserver<QueryResultBean>() {
             @Override
             public void onNext(QueryResultBean resultBean) {
