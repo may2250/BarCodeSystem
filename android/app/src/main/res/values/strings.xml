@@ -11,6 +11,8 @@
     <string name="title_search">记录查询</string>
     <string name="title_setting">设置</string>
     <string name="title_about">关于</string>
+    <string name="title_statistic">统计</string>
+
 
     <string name="searchkey">关键字</string>
     <string name="softkey">软件版本</string>

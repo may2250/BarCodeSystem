@@ -14,3 +14,7 @@ rxjava2+retrofit2+okhttp3
 查询界面
 
 ![image](https://github.com/may2250/BarCodeSystem/blob/master/imgs/20180821155210.png)
+
+统计界面
+
+![image](https://github.com/may2250/BarCodeSystem/blob/master/imgs/20180827151850.png)

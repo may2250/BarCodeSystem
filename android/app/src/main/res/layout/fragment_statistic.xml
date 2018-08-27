@@ -83,7 +83,7 @@
             android:layout_marginLeft="@dimen/margin_large"
             android:layout_marginRight="@dimen/margin_large"
             android:background="@drawable/btn_orange_selector"
-            android:text="搜索" />
+            android:text="统计" />
 
         <com.github.mikephil.charting.charts.PieChart
             android:id="@+id/chart1"

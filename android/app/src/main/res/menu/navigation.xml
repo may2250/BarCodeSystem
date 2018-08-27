@@ -26,8 +26,8 @@
     <item
         android:id="@+id/navigation_about"
         android:enabled="true"
-        android:icon="@drawable/persons"
-        android:title="@string/title_about"
+        android:icon="@drawable/ic_equalizer_blue_900_24dp"
+        android:title="@string/title_statistic"
         app:showAsAction="ifRoom"/>
 
 
