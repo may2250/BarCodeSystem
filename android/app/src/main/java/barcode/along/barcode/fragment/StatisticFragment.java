@@ -146,7 +146,7 @@ public class StatisticFragment extends Fragment {
         l.setYOffset(0f);
 
         // entry label styling
-        mChart.setEntryLabelColor(Color.WHITE);
+        mChart.setEntryLabelColor(Color.BLACK);
         //mChart.setEntryLabelTypeface(mTfRegular);
         mChart.setEntryLabelTextSize(12f);
     }
@@ -165,24 +165,30 @@ public class StatisticFragment extends Fragment {
                 Float total = 0f;
                 for (int i = 0; i < 3 ; i++) {
                     if(i ==0){
-                        entries.add(new PieEntry(Float.parseFloat(result.get(0).toString()),
-                                "万隆",
-                                getResources().getDrawable(R.drawable.persons)));
-                        total += Float.parseFloat(result.get(0).toString());
+                        if(Float.parseFloat(result.get(0).toString()) > 0.01){
+                            entries.add(new PieEntry(Float.parseFloat(result.get(0).toString()),
+                                    "万隆",
+                                    getResources().getDrawable(R.drawable.persons)));
+                            total += Float.parseFloat(result.get(0).toString());
+                        }
                     }else if(i == 1){
-                        entries.add(new PieEntry(Float.parseFloat(result.get(1).toString()),
-                                "格林",
-                                getResources().getDrawable(R.drawable.persons)));
-                        total += Float.parseFloat(result.get(1).toString());
+                        if(Float.parseFloat(result.get(1).toString()) > 0.01){
+                            entries.add(new PieEntry(Float.parseFloat(result.get(1).toString()),
+                                    "格林",
+                                    getResources().getDrawable(R.drawable.persons)));
+                            total += Float.parseFloat(result.get(1).toString());
+                        }
                     }else if(i == 2){
-                        entries.add(new PieEntry(Float.parseFloat(result.get(2).toString()),
-                                "其它",
-                                getResources().getDrawable(R.drawable.persons)));
-                        total += Float.parseFloat(result.get(2).toString());
+                        if(Float.parseFloat(result.get(2).toString()) > 0.01){
+                            entries.add(new PieEntry(Float.parseFloat(result.get(2).toString()),
+                                    "其它",
+                                    getResources().getDrawable(R.drawable.persons)));
+                            total += Float.parseFloat(result.get(2).toString());
+                        }
                     }
                 }
                 mChart.setCenterText(generateCenterSpannableText(total));
-                PieDataSet dataSet = new PieDataSet(entries, "出库类型统计");
+                PieDataSet dataSet = new PieDataSet(entries, "占有公司");
 
                 dataSet.setDrawIcons(false);
 
@@ -218,6 +224,7 @@ public class StatisticFragment extends Fragment {
                 data.setValueFormatter(new PercentFormatter());
                 data.setValueTextSize(11f);
                 data.setValueTextColor(Color.BLACK);
+
                 //data.setValueTypeface(mTfLight);
                 mChart.setData(data);
 
